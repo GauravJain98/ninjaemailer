@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @ticket.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @ticket.text %>
+</p>
+
+<p>
+  <strong>Agent:</strong>
+  <%= Agent.find(@ticket.agent_id).username%>
+</p>
+
+<h2>Comments</h2>
+<%= render @ticket.comments %>
+
+<%
+=begin%>
+  !TODO ADD ADMIN CHECK
+<%
+=end%>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/ticket_form' %>
+
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>
