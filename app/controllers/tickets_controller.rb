@@ -4,12 +4,23 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    @admin = Admin.find_by(user_id:current_user.id)
+    @agent = Agent.find_by(user_id:current_user.id)
+    if @admin
+      @tickets = Ticket.all
+    else
+      @tickets = Ticket.where(agent_id:@agent.id)
+    end
   end
 
   # GET /tickets/1
   # GET /tickets/1.json
   def show
+    @admin = Admin.find_by(user_id:current_user.id)
+    @agent = Agent.find_by(user_id:current_user.id)
+    if @agent and Ticket.find(params[:id]).agent_id!=@agent.id
+      redirect_to :action => "index"
+    end
   end
 
   # GET /tickets/new
@@ -24,7 +35,12 @@ class TicketsController < ApplicationController
   # POST /tickets
   # POST /tickets.json
   def create
-    @ticket = Ticket.new(ticket_params)
+    @ticket = Ticket.find_by(email:ticket_params[:email])
+    if @ticket
+      @ticket.comments.create(comment:ticket_params[:text])
+    else
+      @ticket = Ticket.new(ticket_params)
+    end
 
     respond_to do |format|
       if @ticket.save
@@ -69,6 +85,6 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:title, :text, :agent_id)
+      params.require(:ticket).permit(:email, :text, :agent_id)
     end
 end

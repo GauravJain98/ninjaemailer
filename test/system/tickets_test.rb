@@ -14,9 +14,9 @@ class TicketsTest < ApplicationSystemTestCase
     visit tickets_url
     click_on "New Ticket"
 
-    fill_in "Agent", with: @ticket.agent
+    fill_in "Agent", with: @ticket.agent_id
+    fill_in "Email", with: @ticket.email
     fill_in "Text", with: @ticket.text
-    fill_in "Title", with: @ticket.title
     click_on "Create Ticket"
 
     assert_text "Ticket was successfully created"
@@ -27,9 +27,9 @@ class TicketsTest < ApplicationSystemTestCase
     visit tickets_url
     click_on "Edit", match: :first
 
-    fill_in "Agent", with: @ticket.agent
+    fill_in "Agent", with: @ticket.agent_id
+    fill_in "Email", with: @ticket.email
     fill_in "Text", with: @ticket.text
-    fill_in "Title", with: @ticket.title
     click_on "Update Ticket"
 
     assert_text "Ticket was successfully updated"

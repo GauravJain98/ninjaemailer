@@ -12,21 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.label :email %>
+    <%= form.text_field :email %>
   </div>
 
   <div class="field">
     <%= form.label :text %>
     <%= form.text_area :text %>
   </div>
-
-  <div class="field">
-    <%= form.label :agent_id %>
-    <%= form.collection_select(:agent_id, Agent.all, :id, :username) %>
-  </div>
-  
-
+  <% if Admin.find_by(user_id:current_user.id)%>
+    <div class="field">
+      <%= form.label :agent_id %>
+      <%= form.text_field :agent_id %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= form.submit %>
   </div>

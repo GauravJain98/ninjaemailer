@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  # before_login :require_login
   def create
     @ticket = Ticket.find(params[:ticket_id])
     comment_params[:sender] = false

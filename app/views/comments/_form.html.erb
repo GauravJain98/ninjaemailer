@@ -1,32 +1,13 @@
-<%= form_with(model: comment, local: true) do |form| %>
-  <% if comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-      <ul>
-      <% comment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sender %>
+<%= form_with(model: [ @ticket, @ticket.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :sender %><br>
     <%= form.check_box :sender %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ticket %>
-    <%= form.text_field :ticket %>
-  </div>
-
-  <div class="actions">
+  </p>
+  <p>
+    <%= form.label :comment %><br>
+    <%= form.text_area :comment %>
+  </p>
+  <p>
     <%= form.submit %>
-  </div>
+  </p>
 <% end %>

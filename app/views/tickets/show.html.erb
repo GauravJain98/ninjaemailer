@@ -1,31 +1,25 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
-  <%= @ticket.title %>
+  <strong>Email:</strong>
+  <%= @ticket.email %>
 </p>
 
 <p>
   <strong>Text:</strong>
   <%= @ticket.text %>
 </p>
-
 <p>
   <strong>Agent:</strong>
-  <%= Agent.find(@ticket.agent_id).username%>
+  <%= @ticket.agent_id %>
 </p>
 
-<h2>Comments</h2>
+<h2>Conversation</h2>
 <%= render @ticket.comments %>
 
-<%
-=begin%>
-  !TODO ADD ADMIN CHECK
-<%
-=end%>
-
 <h2>Add a comment:</h2>
-<%= render 'comments/ticket_form' %>
-
+<% if Agent.find_by(user_id:current_user.id) %>
+<%= render 'comments/form' %>
+<% end %>
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>
