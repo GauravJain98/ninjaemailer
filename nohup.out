@@ -553,3 +553,12 @@ Fontconfig error: "/etc/fonts/local.conf", line 1: no element found
 Fontconfig error: "/etc/fonts/local.conf", line 1: no element found
 Fontconfig error: "/etc/fonts/local.conf", line 1: no element found
 Fontconfig error: "/etc/fonts/local.conf", line 1: no element found
+Fontconfig error: "/etc/fonts/local.conf", line 1: no element found
+Fontconfig error: "/etc/fonts/local.conf", line 1: no element found
+
+(/usr/lib/firefox/firefox:29191): dconf-WARNING **: 21:40:30.759: Unable to open /var/lib/flatpak/exports/share/dconf/profile/user: Permission denied
+Fontconfig error: "/etc/fonts/local.conf", line 1: no element found
+Fontconfig error: "/etc/fonts/local.conf", line 1: no element found
+Fontconfig error: "/etc/fonts/local.conf", line 1: no element found
+Fontconfig error: "/etc/fonts/local.conf", line 1: no element found
+Fontconfig error: "/etc/fonts/local.conf", line 1: no element found

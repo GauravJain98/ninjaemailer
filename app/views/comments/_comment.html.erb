@@ -1,3 +1,10 @@
-<p class = <% if comment.sender %>"sender"<% else %>"client"<% end %>>
-    <%= comment.comment %>
-</p>
+
+<div class="p-2 sender">
+    <div class="card float-left bg-light mb-3" style="max-width: 70%;">
+    <div class="card-body">
+        <p class="card-text float-left">
+        <%= comment.comment %>
+        </p>
+    </div>
+    </div>
+</div>
