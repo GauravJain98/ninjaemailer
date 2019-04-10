@@ -1,22 +1,27 @@
-<%= form_for :session, url: session_path do |form| %>
-  <div class="text-field">
-    <%= form.label :email %>
-    <%= form.text_field :email, type: 'email' %>
-  </div>
+<%= form_for :session, url: session_path do |form|%>
+  <div class="row">
+  <div class="offset-md-1 col-md-6">
+    <div class="form-group">
+      <label>Email address</label>
+      <%= form.text_field :email, type: 'email',class:"form-control" %>
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
 
-  <div class="password-field">
-    <%= form.label :password %>
-    <%= form.password_field :password %>
-  </div>
+    <div class="form-group  password-field">
+      <label>Password</label>
+      <%= form.password_field :password ,class:"form-control"%>
+    </div>
 
-  <div class="submit-field">
-    <%= form.submit %>
-  </div>
+    <div class="submit-field">
+      <%= form.submit 'submit',:class =>"btn btn-primary"%>
+    </div>
 
-  <div class="other-links">
-    <% if Clearance.configuration.allow_sign_up? %>
-      <%= link_to t(".sign_up"), sign_up_path %>
-    <% end %>
-    <%= link_to t(".forgot_password"), new_password_path %>
+    <div class="other-links">
+      <% if Clearance.configuration.allow_sign_up? %>
+        <%= link_to t(".sign_up"), sign_up_path,class: "btn btn-link" %>
+      <% end %>
+      <%= link_to t(".forgot_password"), new_password_path,class: "btn btn-link" %>
+    </div>
+  </div>
   </div>
 <% end %>

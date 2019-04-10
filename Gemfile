@@ -62,3 +62,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'whenever', require: false
 gem 'clearance','~> 1.15.1'
+gem 'bootstrap','~> 4.3.1'
