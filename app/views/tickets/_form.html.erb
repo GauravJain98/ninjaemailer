@@ -23,7 +23,7 @@
   <% if Admin.find_by(user_id:current_user.id)%>
     <div class="field">
       <%= form.label :agent_id %>
-      <%= form.text_field :agent_id %>
+      <%= select_tag(:agent_id, options_for_select(Agent.includes(:user).map{|a| [a.user.email,{:class => "selector"},a.id]}),{:class => 'select',}) %>
     </div>
   <% end %>
   <div class="actions">
