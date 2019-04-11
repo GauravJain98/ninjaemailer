@@ -1,13 +1,10 @@
+<div class="text-box">
 <%= form_with(model: [ @ticket, @ticket.comments.build ], local: true) do |form| %>
-  <p>
-    <%= form.label :sender %><br>
-    <%= form.check_box :sender %>
-  </p>
-  <p>
-    <%= form.label :comment %><br>
-    <%= form.text_area :comment %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+  <div class="input-group">
+  <%= form.text_field :comment ,class:"form-control"%>
+  <span class="input-group-btn">
+    <button class="btn btn-default" type="button">
+    </button>
+  </span>
+  <%= form.submit :Comment , class:"btn btn-outline-primary" %>
 <% end %>

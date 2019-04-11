@@ -2,8 +2,12 @@ class CommentsController < ApplicationController
   # before_login :require_login
   def create
     @ticket = Ticket.find(params[:ticket_id])
+    @admin = Admin.find_by(user_id:current_user.id)
+    @agent = Agent.find_by(user_id:current_user.id)
     comment_params[:sender] = false
     @comment = @ticket.comments.create(comment_params)
+    @comment.sender = true
+    @comment.save
     redirect_to ticket_path(@ticket)
   end
  

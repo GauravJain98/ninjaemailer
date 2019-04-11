@@ -1,10 +1,21 @@
-
-<div class="p-2 sender">
-    <div class="card float-left bg-light mb-3" style="max-width: 70%;">
-    <div class="card-body">
-        <p class="card-text float-left">
-        <%= comment.comment %>
-        </p>
+<% if comment.sender %>
+<li class="p-2 sender">
+    <div class="card bg-light" style="max-width: 100%;">
+        <div class="card-body">
+            <p class="card-text float-left">
+                <%= comment.comment %>
+            </p>
+        </div>
     </div>
+</li>
+<% else %>
+<li class="p-2 receiver">
+    <div class="card text-white bg-info" style="max-width: 100%;">
+        <div class="card-body">
+            <p class="card-text float-right text-right">
+                <%= comment.comment %>
+            </p>
+        </div>
     </div>
-</div>
+</li>
+<% end %>

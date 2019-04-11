@@ -1,6 +1,6 @@
 <%= form_with(model: ticket, local: true) do |form| %>
-  <div class="row p-2">
-  <div class="col-md-6">
+  <div class="row p-2 ">
+  <div class="offset-md-1 col-md-6">
   <% if ticket.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
@@ -29,15 +29,15 @@
   <% else %>
     <div class="form-group">
       <%= form.label :email %>
-      <%= form.text_field :text,class:"form-control" %>
+      <%= form.text_field :email ,class:"form-control" %>
     <div>
   <div class="form-group">
       <%= form.label :text %>
       <%= form.text_area :text,class: "form-control" %>
     <div>
   <% end%>
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions p-3">
+    <%= form.submit :"Submit",class:"btn btn-outline-primary" %>
   </div>
   </div>
   </div>

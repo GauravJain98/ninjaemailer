@@ -3,8 +3,6 @@
 .chat-box {
     align-self: auto;
     max-width: 100%;
-    height: 500px;
-    overflow-y: scroll;
 }
 .sender {
     width: 100%;
@@ -33,33 +31,19 @@
 
 <h2>Conversation</h2>
 
-    <main class="container">
-      <div class="chat-box">
-        <%= render @ticket.comments %>
-      </div>
-      <div class="text-box">
-        <div class="input-group">
-          <input type="text" class="form-control" />
-          <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-              <i class="fas fa-paper-plane" style="color:blue"></i>
-            </button>
-          </span>
-        </div>
-      </div>
-    </main>
-<%
-=begin%>
- <main class="container">
+<main class="p-3 m-3">
   <div class="chat-box">
-    <%= render @ticket.comments %>
+    <ul style="list-style: none;" class="p-0">
+      <%= render @ticket.comments %>
+    </ul>
   </div>
-</main> 
-<%
-=end%>
-<h2>Add a comment:</h2>
-<% if Agent.find_by(user_id:current_user.id) %>
-<%= render 'comments/form' %>
-<% end %>
-<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
-<%= link_to 'Back', tickets_path %>
+  <% if Agent.find_by(user_id:current_user.id) %>
+    <%= render 'comments/form' %>
+  <% end %>
+</main>
+<div class="text-center">
+  <% if Admin.find_by(user_id:current_user.id) %>
+    <%= link_to 'Edit', edit_ticket_path(@ticket), class:"btn btn-outline-primary" %> |
+  <% end %>
+  <%= link_to 'Back', tickets_path,class:"btn btn-outline-primary" %>
+</div>

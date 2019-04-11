@@ -4,22 +4,30 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @admin = Admin.find_by(user_id:current_user.id)
-    @agent = Agent.find_by(user_id:current_user.id)
-    if @admin
-      @tickets = Ticket.all
+    if signed_in?
+      @admin = Admin.find_by(user_id:current_user.id)
+      @agent = Agent.find_by(user_id:current_user.id)
+      if @admin
+        @tickets = Ticket.all
+      else
+        @tickets = Ticket.where(agent_id:@agent.id)
+      end
     else
-      @tickets = Ticket.where(agent_id:@agent.id)
+      redirect_to sign_in_path
     end
   end
 
   # GET /tickets/1
   # GET /tickets/1.json
   def show
-    @admin = Admin.find_by(user_id:current_user.id)
-    @agent = Agent.find_by(user_id:current_user.id)
-    if @agent and Ticket.find(params[:id]).agent_id!=@agent.id
-      redirect_to :action => "index"
+    if signed_in?
+      @admin = Admin.find_by(user_id:current_user.id)
+      @agent = Agent.find_by(user_id:current_user.id)
+      if @agent and Ticket.find(params[:id]).agent_id!=@agent.id
+        redirect_to :action => "index"
+      end
+    else
+      redirect_to sign_in_path
     end
   end
 
@@ -57,7 +65,7 @@ class TicketsController < ApplicationController
   # PATCH/PUT /tickets/1.json
   def update
     respond_to do |format|
-      if @ticket.update(ticket_params)
+      if @ticket.update(ticket_update_params)
         format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
         format.json { render :show, status: :ok, location: @ticket }
       else
@@ -86,5 +94,8 @@ class TicketsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
       params.require(:ticket).permit(:email, :text, :agent_id)
+    end
+    def ticket_update_params
+      params.permit(:email, :text, :agent_id)
     end
 end
