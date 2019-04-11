@@ -1,24 +1,53 @@
-# README
+# Ninja Emailer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Task for full stack internship at coding ninjas
+## Setup
 
-Things you may want to cover:
+```
+bundle install
+bin/rails server
+```
 
-* Ruby version
+## Credentials
 
-* System dependencies
+### Admin
 
-* Configuration
+```
+username:admin@codingninjas.com
+password:admin
+```
 
-* Database creation
+### Agents
 
-* Database initialization
+```
+username:agent@codingninjas.com
+password:agent
+```
 
-* How to run the test suite
+```
+username:agent2@codingninjas.com
+password:agent
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Flow
 
-* Deployment instructions
+### Add new ticket/comment by user
 
-* ...
+go to localhost:3000/tickets/new
+
+Each user will have one unique ticket
+
+If new user a new ticket will be formed for the said user else a comment will be added in the users previous ticket once they submit this form
+
+### Assign an agent to the ticket
+
+Login from the admin,click on 'edit' for the ticket that does not have an assignment and assign the agent
+
+### Monitor Chat
+
+Admin can monitor chats of agent by clicking on 'show' for the required ticket
+
+### Reply to an ticket
+
+Login from the required agent, click on show and add the comment wanted
+
