@@ -49,5 +49,5 @@ Admin can monitor chats of agent by clicking on 'show' for the required ticket
 
 ### Reply to an ticket
 
-Login from the required agent, click on show and add the comment wanted
+Login from the required agent, click on show and add the comment wanted. This comment can be sent to the user using an SMTP server(is not being sent right now)
 

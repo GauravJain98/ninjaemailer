@@ -5,38 +5,26 @@
   <%= csrf_meta_tag %>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
-  <%
-=begin%>
- <nav class="navbar navbar-dark bg-primary">
-    <a class="navbar-brand">Emailer</a>
-    <div id="header">
-      <% if signed_in? -%>
-      <span class="navbar-text white-text"><%= current_user.email %></span>
-        <%= button_to t(".sign_out",{class:"btn btn-outline-white btn-md my-2 my-sm-0 ml-3"}), sign_out_path, method: :delete %>
-      <% else -%>
-        <%= link_to t(".sign_in",{class:"btn btn-outline-white btn-md my-2 my-sm-0 ml-3"}), sign_in_path %>
-      <% end -%>
-    </div>
-  </nav> 
-<%
-=end%>
-  <nav class="navbar border border-black navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Emailer</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
-      <% if signed_in? -%>
-          <li class="nav-item">
-            <p class="btn mb-0" href="#"><%= current_user.email %></a>
-          </li>
-          <%= button_to t(".sign_out"), sign_out_path,form_class: "nav-link", method: :delete,class:'btn btn-link' %>
-      <% else -%>
-        <%= link_to t(".sign_in"), sign_in_path %>
-      <% end -%>
-
     </ul>
+      <% if signed_in? -%>
+    <span class="navbar-text">
+      <p class="btn mb-0" href="#"><%= current_user.email %></a>
+    </span>
+    <span class="navbar-text">
+      <%= button_to t(".sign_out"), sign_out_path,form_class: "nav-link", method: :delete,class:'btn btn-link' %>
+    </span>
+      <% else -%>
+    <span class="navbar-text">
+      <%= link_to t(".sign_in"), sign_in_path %>
+    </span>
+      <% end -%>
   </div>
 </nav>
 </head>
